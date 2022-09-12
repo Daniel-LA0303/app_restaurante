@@ -2,6 +2,8 @@ import { createContext, useState, useEffect, useLayoutEffect } from "react";
 import axios from "axios";
 
 import iconosNav from "../helpers/iconos";
+import { formatearFecha } from "../helpers/funciones";
+import { generarId } from "../helpers/funciones";
 
 const RestaurantContext = createContext();
 
@@ -13,6 +15,7 @@ const RestaurantProvider = ({children}) => {
     const[catActual, setCatActual]=useState('cafe');
     //
     const[numPedidos, setNumPedidos] = useState([]);
+    const[ordenes, setOrdenes]=useState([]);
 
     
     //obtiene todos los productos desde la api
@@ -46,6 +49,20 @@ const RestaurantProvider = ({children}) => {
         }
     }
 
+    const handleEliminarProPedido = (id) => {
+        const nuevoPedido= numPedidos.filter( ped => ped.id !== id );
+        setNumPedidos(nuevoPedido);
+    }
+    const handleNuevaOrden = (orden) => {
+        const fecha = new Date();
+        orden.fecha = formatearFecha(fecha);
+        orden.id = generarId();
+        setOrdenes([
+            ...ordenes, orden
+        ]);
+        setNumPedidos([]);
+    }
+
 
     return(
         <RestaurantContext.Provider
@@ -56,6 +73,9 @@ const RestaurantProvider = ({children}) => {
                 productosActual,
                 handleClickIcon,
                 handleNuevoPedido,
+                numPedidos,
+                handleEliminarProPedido,
+                handleNuevaOrden
             }}
         >
             {children}

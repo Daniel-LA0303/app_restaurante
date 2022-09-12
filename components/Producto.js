@@ -4,7 +4,7 @@ import useRestaurant from '../hooks/useRestaurant';
 
 const Producto = ({producto}) => {
 
-    const {handleNuevoPedido, setProductoClick} = useRestaurant();
+    const {handleNuevoPedido} = useRestaurant();
     const[cantidad, setCantidad] = useState(0);
 
     const {imagen, nombre, precio} = producto;
