@@ -17,15 +17,16 @@ const FormNombre = ({numPedidos}) => {
             console.log('El nombre es obligatorio');
             return;
         }
-        // navigate.push('/menu')
+        
         setNombre('');
         handleNuevaOrden({numPedidos, nombre})
+        navigate.push('/menu')
     }   
 
     return (  
         <div className="flex justify-center">
             <form 
-                className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-2/3"
+                className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-2/3 sm:w-1/3"
                 onSubmit={handleSubmit}
             >
                 <div className="mb-4">

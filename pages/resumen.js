@@ -15,17 +15,24 @@ const Resumen = () => {
             <Header pag={'Resumen'} />
             <div>
                 <h1 className=' text-center text-2xl mt-10'>Resumen</h1>
-                <FormNombre 
-                    numPedidos={numPedidos}
-                />
-                <div className=' flex justify-around flex-wrap'>
-                    {numPedidos.map(producto => (
-                        <NumProductos 
-                            producto={producto}
-                            key={producto.id}
+                {numPedidos.length>0 ? (
+                    <>
+                         <FormNombre 
+                            numPedidos={numPedidos}
                         />
-                    ))}                    
-                </div>
+                        <div className=' flex justify-around flex-wrap'>
+                            {numPedidos.map(producto => (
+                                <NumProductos 
+                                    producto={producto}
+                                    key={producto.id}
+                                />
+                            ))}                    
+                        </div>
+                    </>
+                ): (
+                    <p className='mt-8 text-center text-xl font-bold text-red-600'>Aun no hay pedidos en esta orden</p>
+                )}
+               
             </div>
         </div>
       );

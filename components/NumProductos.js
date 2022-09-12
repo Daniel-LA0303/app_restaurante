@@ -8,7 +8,7 @@ const NumProductos = ({producto}) => {
     const{handleEliminarProPedido} = useRestaurant();
     const {cantidad, precio, nombre, imagen} = producto;
     return (  
-        <div className='flex flex-col justify-center w-40 sm:w-72 h-auto  m-3 color-marron shadow-2xl p-3 rounded text-white'>
+        <div className='flex flex-col justify-center w-72 sm:w-52 h-auto  m-3 color-marron shadow-2xl p-3 rounded text-white'>
             <div className='flex justify-center'>
                 <Image 
                     src={`/static/img/${imagen}.jpg`}
