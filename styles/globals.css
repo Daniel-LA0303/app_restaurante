@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 html,
 body {
   padding: 0;
@@ -14,13 +17,34 @@ a {
 * {
   box-sizing: border-box;
 }
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+.color-header{
+  background: #352e31;
 }
+.color-marron{
+  /* background: #2e86c1; */
+  background: #464344;
+}
+.boton-icono{
+  transition: all ease 0.5s;
+}
+.boton-icono:hover{
+  transform: scale(1.08);
+  transition: 1s ease;
+}
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.custom-number-input input:focus {
+  outline: none !important;
+}
+
+.custom-number-input button:focus {
+  outline: none !important;
+}
+.input-form{
+  width: 70%;
+}
+
