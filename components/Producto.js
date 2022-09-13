@@ -4,18 +4,20 @@ import useRestaurant from '../hooks/useRestaurant';
 
 const Producto = ({producto}) => {
 
-    const {handleNuevoPedido} = useRestaurant();
+    const {handleNuevoPedido, handleProducto} = useRestaurant();
     const[cantidad, setCantidad] = useState(0);
 
     const {imagen, nombre, precio} = producto;
 
     const click = () => {
-        if(cantidad === 0){
-            alert('El producto no puede ir con la cantidad de 0');
-            return;
-        }
+        // if(cantidad === 0){
+        //     alert('El producto no puede ir con la cantidad de 0');
+        //     return;
+        // }
         // alert('Producto agregado');
+        // const totalProducto = cantidad * precio;
         handleNuevoPedido({...producto, cantidad});
+        handleProducto({...producto, cantidad})
         setCantidad(0);
     }
 

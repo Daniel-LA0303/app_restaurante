@@ -24,12 +24,12 @@ const Header = ({pag}) => {
             home=false
             ordenes=false
         break
-        // case 'Ordenes':
-        //     pagSig=null;
-        //     pagAnt=null
-        //     home=false
-        //     ordenes=false
-        // break
+        case 'Ordenes':
+            pagSig=null;
+            pagAnt=null
+            home=false
+            ordenes=false
+        break
     }
 
     // console.log(pagSig);

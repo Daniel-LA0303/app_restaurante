@@ -16,6 +16,8 @@ const RestaurantProvider = ({children}) => {
     //
     const[numPedidos, setNumPedidos] = useState([]);
     const[ordenes, setOrdenes]=useState([]);
+    const[producto, setProducto]=useState({});
+    const[total, setTotal] = useState(0);
 
     
     //obtiene todos los productos desde la api
@@ -30,6 +32,12 @@ const RestaurantProvider = ({children}) => {
         const nuevoProducto= productos.filter( pro => pro.categoriaId === catActual );
         setProductosActual(nuevoProducto);
     }, [productos]);
+
+    useEffect(() => {
+        const nuevoTotal = numPedidos.reduce((total, producto) => (producto.precio * producto.cantidad ) + total, 0)
+
+        setTotal(nuevoTotal)
+    }, [numPedidos])
 
     //functions
     const handleClickIcon = (id) => {
@@ -53,14 +61,20 @@ const RestaurantProvider = ({children}) => {
         const nuevoPedido= numPedidos.filter( ped => ped.id !== id );
         setNumPedidos(nuevoPedido);
     }
+    const handleProducto = (producto) => {
+        setProducto(producto);
+    }
     const handleNuevaOrden = (orden) => {
         const fecha = new Date();
         orden.fecha = formatearFecha(fecha);
         orden.id = generarId();
+        orden.total = total
         setOrdenes([
             ...ordenes, orden
         ]);
         setNumPedidos([]);
+        setProducto({});
+        setTotal(0)
     }
 
 
@@ -75,7 +89,10 @@ const RestaurantProvider = ({children}) => {
                 handleNuevoPedido,
                 numPedidos,
                 handleEliminarProPedido,
-                handleNuevaOrden
+                handleNuevaOrden,
+                ordenes,
+                producto,
+                handleProducto
             }}
         >
             {children}
