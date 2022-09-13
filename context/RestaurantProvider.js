@@ -18,6 +18,7 @@ const RestaurantProvider = ({children}) => {
     const[ordenes, setOrdenes]=useState([]);
     const[producto, setProducto]=useState({});
     const[total, setTotal] = useState(0);
+    const[totalOrdenes, setTotalOrdenes]=useState(0);
     //
     const[autorizado, setAutorizado]=useState(false);
 
@@ -39,7 +40,13 @@ const RestaurantProvider = ({children}) => {
         const nuevoTotal = numPedidos.reduce((total, producto) => (producto.precio * producto.cantidad ) + total, 0)
 
         setTotal(nuevoTotal)
-    }, [numPedidos])
+    }, [numPedidos]);
+
+    useEffect(() => {
+        // let ordenesTo = 
+        // const total1 = 10
+        setTotalOrdenes(totalOrdenes + total)
+    }, [ordenes]);
 
     //functions
     const handleClickIcon = (id) => {
@@ -76,7 +83,13 @@ const RestaurantProvider = ({children}) => {
         ]);
         setNumPedidos([]);
         setProducto({});
-        setTotal(0)
+        setTimeout(() => {
+            setTotal(0)    
+        }, 1000);
+        
+    }
+    const eliminarOrden = (id) => {
+        console.log(id);
     }
 
 
@@ -97,7 +110,9 @@ const RestaurantProvider = ({children}) => {
                 handleProducto,
                 autorizado,
                 setAutorizado,
-                total
+                total,
+                eliminarOrden,
+                totalOrdenes
             }}
         >
             {children}

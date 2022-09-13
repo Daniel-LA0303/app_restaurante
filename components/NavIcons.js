@@ -9,13 +9,13 @@ const NavIcons = () => {
 
     return (  
         <nav
-            className="sticky1 flex justify-evenly flex-wrap color-header"
+            className="sticky1 flex justify-evenly flex-wrap color-header py-2"
         >
             {iconos[0].map(icono => (
                 <button
                     key={icono.id}
                     icono={icono}
-                    className={catActual === icono.categoriaId ? 'bg-amber-800 px-5 my-3 rounded boton-icono' : 'bg-amber-600 px-5 my-2 rounded boton-icono'}
+                    className={catActual === icono.categoriaId ? 'bg-amber-800 px-5 rounded boton-icono' : 'bg-amber-600 px-5 my-2 rounded boton-icono'}
                     onClick={() => handleClickIcon(icono.categoriaId)}
                 >
                     <Image 

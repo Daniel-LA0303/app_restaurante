@@ -54,4 +54,107 @@ input[type='number']::-webkit-outer-spin-button {
 .imagen{
   position: relative;
 }
+/* Table */
+.table-container{
+  width: 90%;
+  max-width: 1500px;
+  margin: auto;
+}
+.table{
+  width: 100%;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  table-layout: fixed;
+}
+.table caption{
+  font-size: 28px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 30px 0px;
+}
+.table tr{
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  transition: all 0.5s ease;
+}
+.table th, .table td{
+  font-size: 16px;
+  padding: 8px;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+.table thead th{
+  text-transform: uppercase;
+  background-color: #ddd;
+}
+.table tbody tr:hover{
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.table tbody td:hover{
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.table tbody tr td.btns{
+  
+  justify-content: space-between;
+}
+.table tbody tr td.btns button{
+  display: inline-block;
+  padding: 8px;
+  width: 50%;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 1px 2px ; 
+  transition: all 0.5s ease;
+  font-size: 16px;
+}
+.red{
+  border: 1px solid #ff0534;
+  background: #ff0534;
+  color: white;
+}
+.red:hover{
+  background: white;
+  color: #ff0534;
+}
+@media screen  and (max-width: 800px){
+  .table tbody tr td.btns button{
+    padding: 5px;
+    width: 60px;
+    margin: 1px 2px ; 
+    font-size: 12px;
+  }
+  .table{
+    border: 0px;
+  }
+  .table caption{
+    font-size: 22px;
+  }
+  .table thead{
+    display: none;
+  }
+  .table tr{
+    margin-bottom: 8px;
+    border-bottom: 4px solid #ddd;
+    display: block;
+  }
+  .table th, .table td{
+    font-size: 12px;
+  }
+  .table td{
+    display: block;
+    border-bottom: 1px solid #ddd;
+    text-align: right;
+  }
+  .table td:last-child{
+    border-bottom: 0px;
+  }
+  .table td::before{
+    content: attr(data-label);
+    font-weight: bold;
+    text-transform: uppercase;
+    float: left;
+  }
+}
 

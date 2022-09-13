@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-// import useRestaurant from "../hooks/useRestaurant";
+import useRestaurant from "../hooks/useRestaurant";
+import { useRouter } from "next/router";
 
 const Header = ({pag}) => {
 
-    // const {pedido} = useRestaurant();
+    const {setAutorizado} = useRestaurant();
+    const navigate = useRouter();
 
     let pagSig='error';
     let pagAnt='error';
@@ -21,7 +23,7 @@ const Header = ({pag}) => {
         case 'Resumen' :
             pagSig=null;
             pagAnt='menu'
-            home=false
+            home=true
             ordenes=false
         break
         case 'Ordenes':
@@ -30,6 +32,12 @@ const Header = ({pag}) => {
             home=false
             ordenes=false
         break
+    }
+
+    const hanldeClick = () => {
+        console.log('cerrar sesion');
+        setAutorizado(false);
+        navigate.push('/');
     }
 
     // console.log(pagSig);
@@ -83,7 +91,14 @@ const Header = ({pag}) => {
                         </Link>
                     </div>
                 }
-
+                <div
+                >
+                    <button
+                        onClick={() => hanldeClick()} 
+                        className='block bg-red-500 py-1 px-2 w-auto text-white font-bold text-center mx-2 my-1 rounded'>
+                        Cerrar Sesion
+                    </button>
+                </div>
             </div>
         </div>
     );
