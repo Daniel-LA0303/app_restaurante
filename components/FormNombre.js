@@ -44,7 +44,6 @@ const FormNombre = ({numPedidos}) => {
                     />
                 </div>
                 <input
-                    // onClick={() => handleSubmit()}
                     type="submit"
                     value="Finalizar Orden"
                     className=" bg-lime-600 text-white py-2 px-2 rounded cursor-pointer"

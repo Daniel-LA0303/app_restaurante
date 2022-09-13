@@ -47,4 +47,11 @@ input[type='number']::-webkit-outer-spin-button {
 .input-form{
   width: 70%;
 }
+.sticky1{
+  position: sticky;
+  top: 0;
+}
+.imagen{
+  position: relative;
+}
 
