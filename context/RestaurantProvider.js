@@ -18,6 +18,8 @@ const RestaurantProvider = ({children}) => {
     const[ordenes, setOrdenes]=useState([]);
     const[producto, setProducto]=useState({});
     const[total, setTotal] = useState(0);
+    //
+    const[autorizado, setAutorizado]=useState(false);
 
     
     //obtiene todos los productos desde la api
@@ -92,7 +94,10 @@ const RestaurantProvider = ({children}) => {
                 handleNuevaOrden,
                 ordenes,
                 producto,
-                handleProducto
+                handleProducto,
+                autorizado,
+                setAutorizado,
+                total
             }}
         >
             {children}

@@ -3,24 +3,31 @@ import React from 'react';
 import useRestaurant from '../hooks/useRestaurant';
 //components
 import Header from '../components/Header';
+import Custom404 from './404';
 
 const Ordenes = () => {
 
-  const {ordenes} = useRestaurant();
+  const {ordenes, autorizado} = useRestaurant();
+  let error = <Custom404 />
   return (
     <div>
-      <Header pag={'Ordenes'}/>
-      {ordenes.map(orden => (
-        <div
-          key={orden.id}
-        >
-          {orden.nombre}
-          {orden.fecha}
-          <button
-            className=' bg-red-600 hover:bg-red-700 transition-all duration-300 text-white px-4 py-2 rounded my-2 w-full'
-          >Eliminar</button>
-        </div>
-      ))}
+      {autorizado ? (
+        <>
+          <Header pag={'Ordenes'}/>
+          {ordenes.map(orden => (
+            <div
+              key={orden.id}
+            >
+              {orden.nombre}
+              {orden.fecha}
+              <button
+                className=' bg-red-600 hover:bg-red-700 transition-all duration-300 text-white px-4 py-2 rounded my-2 w-full'
+              >Eliminar</button>
+            </div>
+          ))}
+        </>
+      ): <>{error}</>}
+     
     </div>
   );
 }

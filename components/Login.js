@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import { useRouter } from 'next/router';
+import useRestaurant from '../hooks/useRestaurant';
 
 const Login = () => {
 
-    // const {setAutorizado} = useRestaurant();
+    const {setAutorizado} = useRestaurant();
 
     const[inicio, setInicio] = useState({
         usuario: '',
@@ -20,6 +21,7 @@ const Login = () => {
         }
         if(usuario === 'admin' && password === 'admin'){
             navigate.push('/menu');
+            setAutorizado(true);
             console.log('ha iniciado sesion');
         }else{
             alert('El usuario o la contraseña son necesarios');

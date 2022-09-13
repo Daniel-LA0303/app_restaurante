@@ -17,10 +17,10 @@ const FormNombre = ({numPedidos}) => {
             console.log('El nombre es obligatorio');
             return;
         }
-        
+        navigate.push('/menu')
         setNombre('');
         handleNuevaOrden({numPedidos, nombre})
-        navigate.push('/menu')
+        
     }   
 
     return (  
