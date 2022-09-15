@@ -4,6 +4,7 @@ import axios from "axios";
 import iconosNav from "../helpers/iconos";
 import { formatearFecha } from "../helpers/funciones";
 import { generarId } from "../helpers/funciones";
+import toast, { Toaster } from 'react-hot-toast';
 
 const RestaurantContext = createContext();
 
@@ -38,13 +39,10 @@ const RestaurantProvider = ({children}) => {
 
     useEffect(() => {
         const nuevoTotal = numPedidos.reduce((total, producto) => (producto.precio * producto.cantidad ) + total, 0)
-
-        setTotal(nuevoTotal)
+        setTotal(nuevoTotal);
     }, [numPedidos]);
 
     useEffect(() => {
-        // let ordenesTo = 
-        // const total1 = 10
         setTotalOrdenes(totalOrdenes + total)
     }, [ordenes]);
 
@@ -69,6 +67,17 @@ const RestaurantProvider = ({children}) => {
     const handleEliminarProPedido = (id) => {
         const nuevoPedido= numPedidos.filter( ped => ped.id !== id );
         setNumPedidos(nuevoPedido);
+        toast.success('Producto Eliminado', {
+            style: {
+              border: '1px solid #FC4C4C',
+              padding: '16px',
+              color: '#FC4C4C',
+            },
+            iconTheme: {
+              primary: '#FC4C4C',
+              secondary: '#fff',
+            },
+          });
     }
     const handleProducto = (producto) => {
         setProducto(producto);
@@ -88,10 +97,6 @@ const RestaurantProvider = ({children}) => {
         }, 1000);
         
     }
-    const eliminarOrden = (id) => {
-        console.log(id);
-    }
-
 
     return(
         <RestaurantContext.Provider
@@ -111,7 +116,6 @@ const RestaurantProvider = ({children}) => {
                 autorizado,
                 setAutorizado,
                 total,
-                eliminarOrden,
                 totalOrdenes
             }}
         >

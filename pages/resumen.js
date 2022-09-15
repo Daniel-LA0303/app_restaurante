@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import NumProductos from '../components/NumProductos';
 import FormNombre from '../components/FormNombre';
 import Custom404 from './404';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Resumen = () => {
 
@@ -16,6 +17,10 @@ const Resumen = () => {
             {autorizado ? (
                 <>
                     <Header pag={'Resumen'} />
+                    <Toaster 
+                        position="top-right"
+                        reverseOrder={false}
+                    />
                     <div>
                         <h1 className=' text-center text-2xl mt-10'>Resumen</h1>
                         

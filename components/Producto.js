@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Image from 'next/image';
 import useRestaurant from '../hooks/useRestaurant';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Producto = ({producto}) => {
 
@@ -11,16 +12,21 @@ const Producto = ({producto}) => {
 
     const click = () => {
         if(cantidad === 0){
-            alert('El producto no puede ir con la cantidad de 0');
+            toast.error('El producto no puede ir con la cantidad de 0');
             return;
         }
         handleNuevoPedido({...producto, cantidad});
-        handleProducto({...producto, cantidad})
+        handleProducto({...producto, cantidad});
+        toast.success('Producto Agregado');
         setCantidad(0);
     }
 
     return (  
         <div className='flex flex-col justify-center w-60 sm:w-72 h-auto  m-3 color-marron shadow-2xl p-3 rounded text-white'>
+            <Toaster 
+                position="top-right"
+                reverseOrder={false}
+            />
             <div
                 // className=' rounded z-50'
             >
