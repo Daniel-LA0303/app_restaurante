@@ -157,4 +157,6 @@ input[type='number']::-webkit-outer-spin-button {
     float: left;
   }
 }
-
+.btn-export{
+  background-color: #1d6f42;
+}

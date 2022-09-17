@@ -5,6 +5,7 @@ import useRestaurant from '../hooks/useRestaurant';
 import Header from '../components/Header';
 import Custom404 from './404';
 import Table from '../components/Table';
+import Image from 'next/image';
 
 const Ordenes = () => {
 

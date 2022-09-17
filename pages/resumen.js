@@ -29,7 +29,7 @@ const Resumen = () => {
                                 <FormNombre 
                                     numPedidos={numPedidos}
                                 />
-                                <p className=' text-center text-2xl'>Total: <span className=' font-bold'>${total}</span></p>
+                                <p className=' text-center text-2xl'>Total: <span className=' font-bold'>${total.toFixed(2)}</span></p>
                                 <div className=' flex justify-around flex-wrap'>
                                     {numPedidos.map(producto => (
                                         <NumProductos 

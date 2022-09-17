@@ -17,7 +17,9 @@ const Producto = ({producto}) => {
         }
         handleNuevoPedido({...producto, cantidad});
         handleProducto({...producto, cantidad});
-        toast.success('Producto Agregado');
+        toast.success('Producto Agregado',{
+            duration: 1000,
+        });
         setCantidad(0);
     }
 

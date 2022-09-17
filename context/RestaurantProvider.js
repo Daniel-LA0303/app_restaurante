@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect, useLayoutEffect } from "react";
 import axios from "axios";
+import * as XLSX from 'xlsx/xlsx.mjs'
 
 import iconosNav from "../helpers/iconos";
 import { formatearFecha } from "../helpers/funciones";
@@ -98,6 +99,20 @@ const RestaurantProvider = ({children}) => {
         
     }
 
+    const handleOnExport = () => {
+        
+        const workSheet = XLSX.utils.json_to_sheet(ordenes);
+        const workBook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workBook, workSheet, "Clients");
+        //buffer
+        let buf = XLSX.write(workBook, {bookType: "xlsx", type:"buffer"});
+        //binary string
+        XLSX.write(workBook,{bookType:"xlsx", type:"binary"});
+        //download
+        XLSX.writeFile(workBook, "Ordenes.xlsx");
+    }
+
+
     return(
         <RestaurantContext.Provider
             value={{
@@ -116,7 +131,8 @@ const RestaurantProvider = ({children}) => {
                 autorizado,
                 setAutorizado,
                 total,
-                totalOrdenes
+                totalOrdenes,
+                handleOnExport
             }}
         >
             {children}

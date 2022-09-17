@@ -35,9 +35,11 @@ const Header = ({pag}) => {
     }
 
     const hanldeClick = () => {
-        console.log('cerrar sesion');
-        setAutorizado(false);
+        
         navigate.push('/');
+        setTimeout(() => {
+            setAutorizado(false);
+        }, 2000);
     }
 
     // console.log(pagSig);

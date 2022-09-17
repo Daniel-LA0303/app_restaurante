@@ -14,27 +14,25 @@ const FormNombre = ({numPedidos}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if([nombre].includes('')){
-            console.log('El nombre es obligatorio');
+            toast.error('El nombre es obligatorio',{
+                duration: 1000,
+            });
             return;
         }
 
         setNombre('');
-        handleNuevaOrden({numPedidos, nombre});
+        
         toast.success('Orden agregada',{
-            duration: 2000,
+            duration: 1000,
         });
         setTimeout(() => {
-            navigate.push('/menu')            
-        }, 3000);
-        
+            navigate.push('/ordenes');            
+        }, 1100);
+        handleNuevaOrden({numPedidos, nombre});
     }   
 
     return (  
         <div className="flex justify-center">
-            <Toaster 
-                position="top-right"
-                reverseOrder={false}
-            />
             <form 
                 className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-2/3 sm:w-1/3"
                 onSubmit={handleSubmit}
